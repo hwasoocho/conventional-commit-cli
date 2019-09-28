@@ -7,7 +7,7 @@
     "start": "npm run build && ./dist/index.js",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "bin": {
     "ccc": "dist/index.js"

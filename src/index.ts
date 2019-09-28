@@ -62,9 +62,11 @@ const main = async () => {
   const commitMessage = processCommitMessage(res);
 
   try {
-    await execa.command(`git commit -m "${commitMessage}"`);
+    await execa('git', ['commit', '-m', commitMessage], {
+      stdio: 'inherit',
+    });
   } catch (e) {
-    e.stderr ? console.error(e.stderr) : console.error(e);
+    e.stderr ? console.error(e.stderr) : () => {};
   }
 };
 

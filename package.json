@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run build && ./dist/index.js",
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc"
+    "build": "npm run clean && tsc",
+    "publish": "npm run build && npm publish"
   },
   "bin": {
     "ccc": "dist/index.js"

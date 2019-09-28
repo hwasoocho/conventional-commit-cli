@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import inquirer from 'inquirer';
 import conventionalCommitTypes from 'conventional-commit-types';
 import chalk from 'chalk';

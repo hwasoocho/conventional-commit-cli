@@ -1,12 +1,15 @@
 {
   "name": "conventional-commit-cli",
   "version": "1.0.0",
-  "description": "Type ccc, select commit convention, write message, and commit.",
+  "description": "Select commit type, write scope, write message, and commit.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm run build && node dist/index.js",
+    "start": "npm run build && ./dist/index.js",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc"
+  },
+  "bin": {
+    "ccc": "dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -14,7 +17,8 @@
   },
   "keywords": [
     "conventional",
-    "commit"
+    "commit",
+    "cli"
   ],
   "author": "Henry Cho",
   "license": "ISC",

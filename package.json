@@ -1,0 +1,38 @@
+{
+  "name": "conventional-commit-cli",
+  "version": "1.0.0",
+  "description": "Type ccc, select commit convention, write message, and commit.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hwasoocho/conventional-commit-cli.git"
+  },
+  "keywords": [
+    "conventional",
+    "commit"
+  ],
+  "author": "Henry Cho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hwasoocho/conventional-commit-cli/issues"
+  },
+  "homepage": "https://github.com/hwasoocho/conventional-commit-cli#readme",
+  "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/execa": "^2.0.0",
+    "@types/inquirer": "^6.5.0",
+    "rimraf": "^3.0.0",
+    "typescript": "^3.6.3"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "conventional-commit-types": "^2.1.1",
+    "execa": "^2.0.4",
+    "inquirer": "^7.0.0"
+  }
+}

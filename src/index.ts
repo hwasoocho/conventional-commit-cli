@@ -65,9 +65,7 @@ const main = async () => {
     await execa('git', ['commit', '-m', commitMessage], {
       stdio: 'inherit',
     });
-  } catch (e) {
-    e.stderr ? console.error(e.stderr) : () => {};
-  }
+  } catch (e) {} // Error is already printed by inherited stdio.
 };
 
 main();

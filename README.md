@@ -19,3 +19,7 @@ A handy tool to quickly make [Conventional Commits](https://www.conventionalcomm
 ## What about body and footer?
 
 Complete the commit and use `git commit --amend`.
+
+## License
+
+MIT

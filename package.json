@@ -22,7 +22,7 @@
     "cli"
   ],
   "author": "Henry Cho",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/hwasoocho/conventional-commit-cli/issues"
   },

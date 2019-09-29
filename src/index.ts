@@ -41,13 +41,13 @@ const main = async () => {
     {
       type: 'input',
       name: 'scope',
-      message: `Write scope ${chalk.dim('(optional)')}:`,
+      message: `Write commit scope ${chalk.dim('(optional)')}:`,
       filter: (input: string) => input.trim(),
     },
     {
       type: 'input',
       name: 'message',
-      message: 'Write message:',
+      message: 'Write commit message:',
       filter: (input: string) => input.trim(),
     },
     {

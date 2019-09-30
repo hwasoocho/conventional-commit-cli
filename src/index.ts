@@ -41,7 +41,9 @@ const main = async () => {
     {
       type: 'input',
       name: 'scope',
-      message: `Write commit scope ${chalk.dim('(optional)')}:`,
+      message: `Write commit scope, e.g. routes, config, users, etc ${chalk.dim(
+        '(optional)'
+      )}:`,
       filter: (input: string) => input.trim(),
     },
     {
@@ -55,7 +57,7 @@ const main = async () => {
       name: 'confirm',
       default: true,
       message: (res: PromptResponse) =>
-        `Confirm commit? ${chalk.green(processCommitMessage(res))}`,
+        `Confirm commit? ${chalk.green(`"${processCommitMessage(res)}"`)}`,
     },
   ]);
 

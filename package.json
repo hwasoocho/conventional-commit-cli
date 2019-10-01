@@ -4,7 +4,7 @@
   "description": "Select commit type, write scope, write message, and commit.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "npm run build && ./dist/index.js",
+    "start": "npm run build && node dist/index.js",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
     "prepublishOnly": "npm run build"
@@ -38,6 +38,7 @@
     "chalk": "^2.4.2",
     "conventional-commit-types": "^2.1.1",
     "execa": "^2.0.4",
-    "inquirer": "^7.0.0"
+    "inquirer": "^7.0.0",
+    "staged-git-files": "^1.2.0"
   }
 }

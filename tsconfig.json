@@ -10,7 +10,10 @@
     "alwaysStrict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "*": ["./types/*"]
+    }
   },
   "exclude": ["node_modules", "dist"]
 }

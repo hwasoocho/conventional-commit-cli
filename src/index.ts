@@ -1,75 +1,28 @@
 #!/usr/bin/env node
 
-import inquirer from 'inquirer';
-import conventionalCommitTypes from 'conventional-commit-types';
-import chalk from 'chalk';
-import execa from 'execa';
-
-interface PromptResponse {
-  type: string;
-  scope: string;
-  message: string;
-  confirm: boolean;
-}
-
-function processCommitMessage({ type, scope, message }: PromptResponse) {
-  const scopePartial = scope ? `(${scope})` : '';
-
-  return `${type}${scopePartial}: ${message}`;
-}
+import {
+  getPromptResponse,
+  PromptResponse,
+  processCommitMessage,
+} from './lib/prompt';
+import { commit, printStagedFiles, getStagedFiles } from './lib/git';
+import { paddedPrint, delay } from './lib/util';
 
 const main = async () => {
-  const commitTypes: object = conventionalCommitTypes.types;
-  const numberOfCommitTypes: number = Object.keys(commitTypes).length;
-  const longestCommitTypeLength: number = Object.keys(commitTypes)
-    .map(type => type.length)
-    .sort()[numberOfCommitTypes - 1];
+  const stagedFiles = await getStagedFiles();
+  if (stagedFiles.length == 0) {
+    paddedPrint('Nothing to commit.');
 
-  const res: PromptResponse = await inquirer.prompt([
-    {
-      type: 'list',
-      name: 'type',
-      message: 'Select commit type:',
-      choices: Object.entries(commitTypes).map(([type, typeObj]) => ({
-        name: `${chalk.bold(type.padStart(longestCommitTypeLength))} | ${
-          typeObj.description
-        }`,
-        value: type,
-        short: type,
-      })),
-    },
-    {
-      type: 'input',
-      name: 'scope',
-      message: `Write commit scope, e.g. routes, config, users, etc ${chalk.dim(
-        '(optional)'
-      )}:`,
-      filter: (input: string) => input.trim(),
-    },
-    {
-      type: 'input',
-      name: 'message',
-      message: 'Write commit message:',
-      filter: (input: string) => input.trim(),
-    },
-    {
-      type: 'confirm',
-      name: 'confirm',
-      default: true,
-      message: (res: PromptResponse) =>
-        `Confirm commit? ${chalk.green(`"${processCommitMessage(res)}"`)}`,
-    },
-  ]);
+    return;
+  }
+  printStagedFiles(stagedFiles);
+  await delay(500); // fx
 
+  const res = await getPromptResponse();
   if (res.confirm === false) return;
 
   const commitMessage = processCommitMessage(res);
-
-  try {
-    await execa('git', ['commit', '-m', commitMessage], {
-      stdio: 'inherit',
-    });
-  } catch (e) {} // Error is already printed by inherited stdio.
+  await commit(commitMessage);
 };
 
 main();

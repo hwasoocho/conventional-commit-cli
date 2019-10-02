@@ -1,6 +1,4 @@
-export function paddedPrint(message: string) {
-  console.log(`\n${message}\n`);
-}
+export const printMessage = console.log;
 
 export async function delay(ms: number) {
   return new Promise(res => setTimeout(res, ms));

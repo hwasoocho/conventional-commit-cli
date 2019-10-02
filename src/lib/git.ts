@@ -2,7 +2,7 @@ import execa from 'execa';
 import chalk from 'chalk';
 import getStagedFiles, { StagedFile } from 'staged-git-files';
 
-import { paddedPrint } from './util';
+import { printMessage } from './util';
 
 export { getStagedFiles, StagedFile }; // TODO: wrap third-party
 
@@ -12,8 +12,9 @@ export function printStagedFiles(files: StagedFile[]): void {
     .sort()
     .reverse()[0];
 
-  paddedPrint(
-    chalk.bold('Changes to commit:\n\n') +
+  printMessage(
+    chalk.bold('Changes to commit:') +
+      '\n\n' +
       files
         .map(file => {
           var chalkFn;
@@ -26,7 +27,8 @@ export function printStagedFiles(files: StagedFile[]): void {
             `${file.status.padStart(longestStatusLength + 1)} ${file.filename}`
           );
         })
-        .join('\n')
+        .join('\n') +
+      '\n'
   );
 }
 

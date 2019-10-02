@@ -6,12 +6,12 @@ import {
   processCommitMessage,
 } from './lib/prompt';
 import { commit, printStagedFiles, getStagedFiles } from './lib/git';
-import { paddedPrint, delay } from './lib/util';
+import { printMessage, delay } from './lib/util';
 
 const main = async () => {
   const stagedFiles = await getStagedFiles();
   if (stagedFiles.length == 0) {
-    paddedPrint('Nothing to commit.');
+    printMessage('Nothing to commit.');
 
     return;
   }

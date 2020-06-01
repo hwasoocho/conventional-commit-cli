@@ -22,4 +22,4 @@ Complete the commit and use `git commit --amend`.
 
 ## License
 
-MIT
+MIT!

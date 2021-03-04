@@ -16,7 +16,6 @@ const main = async () => {
     return;
   }
   printStagedFiles(stagedFiles);
-  await delay(500); // fx
 
   const res = await getPromptResponse();
   if (res.confirm === false) return;

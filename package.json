@@ -1,6 +1,6 @@
 {
   "name": "conventional-commit-cli",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Select commit type, write scope, write message, and commit.",
   "main": "dist/index.js",
   "scripts": {
